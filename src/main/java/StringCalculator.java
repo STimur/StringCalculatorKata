@@ -10,12 +10,18 @@ public class StringCalculator {
         }
         String[] nums = input.split(delimitersExp);
         int sum = 0;
+        String msg = "negatives not allowed:";
+        boolean negativesPresented = false;
         for (String s : nums) {
             int num = Integer.valueOf(s);
-            if (num < 0)
-                throw new NegativesNotAllowedException("negatives not allowed: " + num);
+            if (num < 0) {
+                msg += " " + num;
+                negativesPresented = true;
+            }
             sum += Integer.valueOf(s);
         }
+        if (negativesPresented)
+            throw new NegativesNotAllowedException(msg);
 
         return sum;
     }

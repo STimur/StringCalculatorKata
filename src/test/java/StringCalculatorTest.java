@@ -40,5 +40,12 @@ public class StringCalculatorTest {
         expectedException.expectMessage("negatives not allowed: -1");
         StringCalculator.add("-1");
     }
+
+    @Test
+    public void addMultipleNegativeNumbers() throws Exception {
+        expectedException.expect(StringCalculator.NegativesNotAllowedException.class);
+        expectedException.expectMessage("negatives not allowed: -1 -2 -45");
+        StringCalculator.add("-1,-2,-45");
+    }
 }
 
