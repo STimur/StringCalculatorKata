@@ -1,8 +1,13 @@
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
 public class StringCalculatorTest {
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
     @Test
     public void calculateEmptyString() throws Exception {
         assertEquals(0, StringCalculator.add(""));
@@ -26,7 +31,14 @@ public class StringCalculatorTest {
     @Test
     public void calculateWithCustomDefinedDelimiter() throws Exception {
         assertEquals(3, StringCalculator.add("//;\n1;2"));
-        assertEquals(3, StringCalculator.add("//-\n1-2"));
+        assertEquals(3, StringCalculator.add("//:\n1:2"));
+    }
+
+    @Test
+    public void addOneNegativeNumber() throws Exception {
+        expectedException.expect(StringCalculator.NegativesNotAllowedException.class);
+        expectedException.expectMessage("negatives not allowed: -1");
+        StringCalculator.add("-1");
     }
 }
 
