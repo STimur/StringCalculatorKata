@@ -3,7 +3,7 @@ public class StringCalculator {
         if (input.isEmpty())
             return 0;
 
-        String[] nums = input.split(",");
+        String[] nums = input.split(",|\n");
         int sum = 0;
         for (String s : nums)
             sum += Integer.valueOf(s);
