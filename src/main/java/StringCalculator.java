@@ -1,7 +1,13 @@
 public class StringCalculator {
-    public static int add(String numbers) {
-        if (numbers.isEmpty())
+    public static int add(String input) {
+        if (input.isEmpty())
             return 0;
-        return Integer.valueOf(numbers);
+
+        String[] nums = input.split(",");
+        int sum = 0;
+        for (String s : nums)
+            sum += Integer.valueOf(s);
+
+        return sum;
     }
 }
