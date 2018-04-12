@@ -1,0 +1,10 @@
+# Idea user-specific files
+.idea/workspace.xml
+.idea/gradle.xml
+
+# Idea generated files
+out/
+
+# Gradle generated files
+/.gradle
+/build
